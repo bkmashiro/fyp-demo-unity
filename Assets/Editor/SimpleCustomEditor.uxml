@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/SimpleCustomEditor.uss?fileID=7433441132597879392&amp;guid=5a45bcc2b160afd418eda72d865ece68&amp;type=3#SimpleCustomEditor" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: column-reverse;">
+        <ui:Button text="TakePhoto" parse-escape-sequences="true" display-tooltip-when-elided="true" name="takePhoto" style="-unity-text-align: middle-center; white-space: nowrap; justify-content: flex-start; flex-direction: column;" />
+        <ui:ScrollView>
+            <ui:Label tabindex="-1" text="[Debug]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="dbg" style="white-space: normal;" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>
