@@ -1,23 +1,21 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class CameraController : MonoBehaviour
+public class CameraSnapshotManager : MonoBehaviour
 {
     ARCameraManager arCameraManager;
-
-    public static CameraController instance;
 
     private Texture2D cameraTexture; // 用于存储当前相机帧数据
     private Texture2D photo;         // 用于保存拍摄的照片
     private bool isProcessingPhoto = false;
 
-    void Awake()
+    void Start()
     {
-        instance = this;
-        // arCameraManager = GetComponent<ARCameraManager>();
+        arCameraManager = FindObjectOfType<ARCameraManager>();
         if (arCameraManager == null)
         {
             Debug.LogError("ARCameraManager not set！");
@@ -66,7 +64,7 @@ public class CameraController : MonoBehaviour
                         inputRect = new RectInt(0, 0, image.width, image.height),
                         outputDimensions = new Vector2Int(image.width, image.height),
                         outputFormat = TextureFormat.RGBA32,
-                        transformation = XRCpuImage.Transformation.None
+                        transformation = XRCpuImage.Transformation.MirrorX
                     };
 
                     var rawTextureData = cameraTexture.GetRawTextureData<byte>();

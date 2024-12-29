@@ -26,7 +26,7 @@ public class SpatialImage : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("请在 Inspector 中分配一个 Texture2D 图片！");
+            Debug.LogWarning("Texture is null!");
         }
     }
 }

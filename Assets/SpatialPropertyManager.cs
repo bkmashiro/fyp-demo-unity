@@ -1,17 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Google.XR.ARCoreExtensions;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 
 public class SpatialPropertyManager : MonoBehaviour
 {
 
     public Pose pose;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +18,10 @@ public class SpatialPropertyManager : MonoBehaviour
 
     }
 
-    void ApplyPose()
+    public void ApplyPose()
     {
-        
+        transform.position = pose.position;
+        transform.rotation = pose.rotation;
     }
 
     // public void SetLocation(double latitude, double longitude, double lat_long_accuracy, double altitude, double altitude_accuracy)
