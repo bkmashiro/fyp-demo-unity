@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class ButtonHandler : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI DebugLogTextUI;
+    // public TMPro.TextMeshProUGUI DebugLogTextUI;
     // private SpatialCursor _cursor;
     public XROrigin xrOrigin;
     // private EarthDebugController _earthDebugController;
@@ -68,7 +68,7 @@ public class ButtonHandler : MonoBehaviour
 
             // img.SetActive(true);
 
-            CreatePlaneInView(photo, 2f, Camera.main);
+            CreatePlaneInView(photo, 0.7f, Camera.main);
 
             Debug.Log($"Placing image at {Camera.main.transform.position}");
             Debug.Log($"OriginInCameraSpacePos={xrOrigin.OriginInCameraSpacePos}");
@@ -111,6 +111,7 @@ public class ButtonHandler : MonoBehaviour
         // 计算平面大小以匹配摄像机视野
         float height = 2f * distance * Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
         float width = height * mainCamera.aspect;
+
 
         // 设置平面大小
         plane.transform.localScale = new Vector3(width, height, 1f);

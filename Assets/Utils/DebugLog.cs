@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 public class DebugLogToScreen : MonoBehaviour
 {
     public Label dbgLabel; // 用于显示日志的UI文本
+    public bool showDebugLog = true;
+
     public int maxLines = 50; // 最多显示的日志行数
     public UIDocument uiDocument;
 
@@ -15,7 +17,7 @@ public class DebugLogToScreen : MonoBehaviour
     private void OnEnable()
     {
         // 获取UI Document
-        
+
         if (uiDocument == null)
         {
             Debug.LogError("UIDocument not found!");
@@ -26,6 +28,8 @@ public class DebugLogToScreen : MonoBehaviour
         VisualElement root = uiDocument.rootVisualElement;
 
         dbgLabel = root.Q<Label>("dbg");
+
+        root.Q<UnityEngine.UIElements.Button>("enableDbgBtn").clicked += () => ToggleDebugLog(!showDebugLog);
     }
 
     void Awake()
@@ -80,5 +84,11 @@ public class DebugLogToScreen : MonoBehaviour
         {
             dbgLabel.text = string.Join("\n", logQueue);
         }
+    }
+
+    public void ToggleDebugLog(bool value)
+    {
+        showDebugLog = value;
+        dbgLabel.style.display = showDebugLog ? DisplayStyle.Flex : DisplayStyle.None;
     }
 }

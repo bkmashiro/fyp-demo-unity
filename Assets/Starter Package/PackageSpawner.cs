@@ -61,16 +61,16 @@ public class PackageSpawner : MonoBehaviour
 
     private void Update()
     {
-        var lockedPlane = DrivingSurfaceManager.LockedPlane;
-        if (lockedPlane != null)
-        {
-            if (Package == null)
-            {
-                SpawnPackage(lockedPlane);
-            }
+        // var lockedPlane = DrivingSurfaceManager.LockedPlane;
+        // if (lockedPlane != null)
+        // {
+        //     if (Package == null)
+        //     {
+        //         SpawnPackage(lockedPlane);
+        //     }
 
-            var packagePosition = Package.gameObject.transform.position;
-            packagePosition.Set(packagePosition.x, lockedPlane.center.y, packagePosition.z);
-        }
+        //     var packagePosition = Package.gameObject.transform.position;
+        //     packagePosition.Set(packagePosition.x, lockedPlane.center.y, packagePosition.z);
+        // }
     }
 }
