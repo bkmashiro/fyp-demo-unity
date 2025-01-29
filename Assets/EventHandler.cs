@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -44,6 +45,17 @@ public class ButtonHandler : MonoBehaviour
         {
             Debug.LogError("Button not found!");
         }
+
+        Button takePhotoBtn2 = root.Q<Button>("btn2");
+        if (takePhotoBtn2 != null)
+        {
+            // 绑定点击事件
+            takePhotoBtn2.clicked += OnButton2Clicked;
+        }
+        else
+        {
+            Debug.LogError("Button not found!");
+        }
     }
 
 
@@ -82,6 +94,24 @@ public class ButtonHandler : MonoBehaviour
         }
     }
 
+    public List<Texture2D> textures = new List<Texture2D>();
+
+    public void OnButton2Clicked()
+    {
+        var photo = textures.Count > 0 ? textures[0] : null;
+
+        if (photo == null)
+        {
+            Debug.LogError("Photo is null, unable to apply texture.");
+            return;
+        }
+
+
+        CreatePlaneInView(photo, 0.7f, Camera.main);
+
+        // pop
+        textures.RemoveAt(0);
+    }
 
 
     public void CreatePlaneInView(Texture2D texture, float distance, Camera mainCamera)

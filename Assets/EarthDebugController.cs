@@ -34,6 +34,14 @@ public class EarthDebugController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#pragma warning disable CS0162 // 检测到无法访问的代码
+
+#if UNITY_EDITOR
+
+        EarthStatusTextUI.text = "Not supported in Editor mode";
+        return;
+
+#endif
 
         string txt = "";
         if (ARSession.state != ARSessionState.SessionTracking)
@@ -93,5 +101,7 @@ public class EarthDebugController : MonoBehaviour
             geoPose.EunRotation, geoPose.OrientationYawAccuracy);
 
         _geoPose = geoPose;
+#pragma warning restore CS0162 // 检测到无法访问的代码
+
     }
 }
